@@ -22,7 +22,7 @@
 <!--</children>-->
 <!--</GridPane>-->
 
-<GridPane prefHeight="430.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="430.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -68,6 +68,6 @@
                   <Insets bottom="50.0" />
                </GridPane.margin>
             </TextField>
-      <Button id="login_btn" mnemonicParsing="false" stylesheets="@style.css" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button id="login_btn" fx:id="login_btn" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@style.css" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
