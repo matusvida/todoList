@@ -1,0 +1,9 @@
+#login_btn {
+    -fx-background-color: linear-gradient(#ff7504, #ec1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-min-width: 100px;
+    -fx-min-height: 40px;
+    -fx-font-family: Cambria;
+}
