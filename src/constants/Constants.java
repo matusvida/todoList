@@ -13,5 +13,6 @@ public final class Constants {
     public static final int MIN_ROW_INDEX = 2;
 
     public static final String NUMBER_OF_NOTES_ERROR = "Number of notes can't be greater than 5";
+    public static final String FAILED_LOGIN_RESPONSE = "Invalid user name or password";
 
 }

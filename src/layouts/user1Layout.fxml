@@ -36,18 +36,24 @@
                 <Insets />
             </GridPane.margin>
         </Label>
-      <Button id="add_btn" fx:id="add_btn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddButtonAction" styleClass="menu-buttons" text="ADD NOTE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Button id="add_btn" fx:id="add_btn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddButtonAction" styleClass="menu-buttons" text="Add note" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <stylesheets>
             <URL value="@style.css" />
          </stylesheets>
+         <GridPane.margin>
+            <Insets left="11.0" />
+         </GridPane.margin>
       </Button>
-      <Button id="logout_btn" fx:id="logOut_btn" mnemonicParsing="false" onAction="#handleLogOutButtonAction" styleClass="menu-buttons" stylesheets="@style.css" text="LOG OUT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Label fx:id="infoLabel" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <Button id="logout_btn" fx:id="logOut_btn" mnemonicParsing="false" onAction="#handleLogOutButtonAction" styleClass="menu-buttons" stylesheets="@style.css" text="Logout" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets right="11.0" />
+         </GridPane.margin></Button>
+      <Label fx:id="infoLabel" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <font>
-            <Font name="Cambria Bold" size="16.0" />
+            <Font name="Comic Sans MS Bold" size="14.0" />
          </font>
       </Label>
     </children>

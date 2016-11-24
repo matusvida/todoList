@@ -58,12 +58,12 @@
                   <Insets top="50.0" />
                </GridPane.margin>
             </Label>
-            <PasswordField maxWidth="-Infinity" prefWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <PasswordField fx:id="password" maxWidth="-Infinity" prefWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="50.0" />
                </GridPane.margin>
             </PasswordField>
-            <TextField maxWidth="-Infinity" prefWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <TextField fx:id="userName" maxWidth="-Infinity" prefWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="50.0" />
                </GridPane.margin>

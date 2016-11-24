@@ -1,5 +1,6 @@
 package controlers;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import constants.Constants;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class UserController {
             user1Grid.add(notesComponents.getSaveBtn(),3,rowIndex);
             user1Grid.add(notesComponents.getEditBtn(),4,rowIndex);
             user1Grid.add(notesComponents.getDeleteBtn(),5,rowIndex);
-//            user1Grid.setGridLinesVisible(true);
+            user1Grid.setGridLinesVisible(true);
         }
     }
 
@@ -74,6 +76,16 @@ public class UserController {
         stage.show();
     }
 
+    @FXML
+    private void hoverStyleForButtons(ActionEvent event) throws IOException{
+        System.out.println("something");
+        FadeTransition ft = new FadeTransition(Duration.millis(3000));
+        ft.setNode(add_btn);
+        ft.setFromValue(1.0);
+        ft.setToValue(0.2);
+        ft.play();
+    }
+
     private int getRowIndex(ArrayList<NotesComponents> listOfNotes) throws Exception{
         int rowIndex;
         if(listOfNotes.size() == 0){
@@ -84,7 +96,7 @@ public class UserController {
             throw new Exception(Constants.NUMBER_OF_NOTES_ERROR);
         }
         return rowIndex;
-
-
     }
+
+
 }
