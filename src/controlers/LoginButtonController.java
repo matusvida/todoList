@@ -1,9 +1,8 @@
-package sample;
+package controlers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+public class LoginButtonController {
 
     @FXML
     private Button login_btn;
@@ -24,7 +23,7 @@ public class Controller {
             //get reference to the button's stage
             stage = (Stage) login_btn.getScene().getWindow();
             //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("screen1.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../layouts/user1Layout.fxml"));
         }
 
         Scene scene = new Scene(root);

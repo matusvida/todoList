@@ -1,0 +1,61 @@
+.button{
+    /*-fx-background-color: linear-gradient(#fa6a4d, #af6968);*/
+    -fx-background-color:
+            #ff9242,
+            linear-gradient(#ff7504 0%, #cc5307 20%, #e04602 100%),
+            linear-gradient(#ed310d, #d7261e),
+            radial-gradient(center 50% 0%, radius 100%, rgba(255, 162, 87, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( three-pass-box , rgba(2,2,2,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Cambria";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 10px;
+    -fx-padding: 10 20 10 20;
+    /*-fx-background-color: linear-gradient(#868686, #9e958a);*/
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 3px;
+}
+
+#login_btn {
+    -fx-background-color: linear-gradient(#ff7504, #ec1d00);
+    -fx-background-radius: 30;
+    -fx-min-width: 100px;
+    -fx-min-height: 40px;
+    -fx-font-size: 16px;
+    -fx-font-family: Cambria;
+}
+
+.menu-buttons{
+    -fx-font-size: 11px;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 20px;
+    -fx-padding: 10px;
+    -fx-border-insets: 10px;
+    -fx-background-repeat: no-repeat;
+    -fx-text-alignment: right;
+    -fx-background-position: 5%;
+    -fx-alignment: center-right;
+}
+
+#add_btn{
+    -fx-background-image: url('../images/plus.png');
+    -fx-background-size: 18px;
+}
+
+#logout_btn{
+    -fx-background-image: url('../images/logout1.png');
+    -fx-background-size: 20px;
+}
+
+.text-area{
+    -fx-padding: 20px;
+    -fx-border-insets: 20px;
+    -fx-background-insets: 20px;
+}
+
