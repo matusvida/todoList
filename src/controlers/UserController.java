@@ -8,7 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import constants.Constants;
 import javafx.util.Duration;
@@ -49,14 +51,15 @@ public class UserController {
             Scene scene = root.getScene();
             scene.getStylesheets().add(styles);
 
-            NotesComponents notesComponents = new NotesComponents();
-            listOfNotes.add(notesComponents);
+            NotesComponents notesComponents = new NotesComponents(listOfNotes.size()+1);
 
+            listOfNotes.add(notesComponents);
+//
+            notesComponents.getNote().setId("note"+listOfNotes.size());
+            notesComponents.gethBox().setId("hbox"+listOfNotes.size());
             user1Grid.add(notesComponents.getNote(),0,rowIndex,3,1);
-            user1Grid.add(notesComponents.getSaveBtn(),3,rowIndex);
-            user1Grid.add(notesComponents.getEditBtn(),4,rowIndex);
-            user1Grid.add(notesComponents.getDeleteBtn(),5,rowIndex);
-            user1Grid.setGridLinesVisible(true);
+            user1Grid.add(notesComponents.gethBox(),3, rowIndex, 4,1);
+            notesComponents.getSaveBtn().setOnAction(this::handleSaveButtonAction);
         }
     }
 
@@ -77,6 +80,14 @@ public class UserController {
     }
 
     @FXML
+    private void handleSaveButtonAction(ActionEvent event){
+        String index = event.getSource().toString().substring(18,19);
+        TextArea textArea = listOfNotes.get(Integer.parseInt(index)-1).getNote();
+        textArea.setEditable(false);
+        textArea.setDisable(false);
+    }
+
+    @FXML
     private void hoverStyleForButtons(ActionEvent event) throws IOException{
         System.out.println("something");
         FadeTransition ft = new FadeTransition(Duration.millis(3000));
@@ -85,6 +96,7 @@ public class UserController {
         ft.setToValue(0.2);
         ft.play();
     }
+
 
     private int getRowIndex(ArrayList<NotesComponents> listOfNotes) throws Exception{
         int rowIndex;

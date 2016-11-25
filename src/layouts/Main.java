@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("loginLayout.fxml"));
         primaryStage.setTitle("TODO List");
-        primaryStage.setScene(new Scene(root, 630, 500));
+        primaryStage.setScene(new Scene(root, 780, 630));
         primaryStage.show();
     }
 

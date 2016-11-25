@@ -1,5 +1,4 @@
 .button{
-    /*-fx-background-color: linear-gradient(#fa6a4d, #af6968);*/
     -fx-background-color:
             #ff9242,
             linear-gradient(#ff7504 0%, #cc5307 20%, #e04602 100%),
@@ -13,20 +12,19 @@
     -fx-text-fill: linear-gradient(white, #d0d0d0);
     -fx-font-size: 10px;
     -fx-padding: 10 20 10 20;
-    /*-fx-background-color: linear-gradient(#868686, #9e958a);*/
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-text-fill: #f1f1f1;
     -fx-font-weight: bold;
-    -fx-pref-width: 80px;
-    -fx-pref-height: 3px;
+    -fx-pref-width: 82px;
+    -fx-pref-height: 10px;
+    -fx-alignment: center;
 }
 
 .button:hover{
     -fx-background-color: linear-gradient(#ed5641, #c10e01);
     -fx-effect: dropshadow(gaussian, #4f4f4f, 2, 0.5, 1, 1);
     -fx-text-fill: #FFFFFF;
-
 }
 
 #login_btn {
@@ -40,7 +38,7 @@
 
 .menu-buttons{
     -fx-font-size: 12px;
-    -fx-pref-width: 90px;
+    -fx-pref-width: 85px;
     -fx-pref-height: 20px;
     -fx-padding: 10px;
     -fx-border-insets: 10px;
@@ -48,6 +46,20 @@
     -fx-text-alignment: right;
     -fx-background-position: 5%;
     -fx-alignment: center-right;
+}
+
+.control-buttons{
+
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #4f4f4f;
+    -fx-font-size: 12px;
+}
+
+.control-buttons:hover{
+    -fx-background-color: linear-gradient(#dddddd, #cccccc);
+    -fx-text-fill: #c10e01;
+    -fx-effect: dropshadow(gaussian, #4f4f4f, 5, 0.5, 1, 1);
+    /*-fx-text-fill: #FFFFFF;*/
 }
 
 #add_btn{
@@ -66,3 +78,14 @@
     -fx-background-insets: 20px;
 }
 
+.date-picker{
+    -fx-font-size: 12px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-pref-height: 48px;
+    -fx-pref-width: 100px;
+}
+
+.hbox{
+    -fx-alignment: center;
+
+}

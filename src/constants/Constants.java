@@ -14,5 +14,6 @@ public final class Constants {
 
     public static final String NUMBER_OF_NOTES_ERROR = "Number of notes can't be greater than 5";
     public static final String FAILED_LOGIN_RESPONSE = "Invalid user name or password";
+    public static final String FAILED_SAVE_EMPTY_NOTE = "Can't save empty note";
 
 }
