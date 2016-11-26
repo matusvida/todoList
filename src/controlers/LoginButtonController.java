@@ -43,12 +43,12 @@ public class LoginButtonController {
         if (event.getSource() == login_btn) {
             stage = (Stage) login_btn.getScene().getWindow();
             result = authentication(user, pass);
-//            if(Constants.FAILED_LOGIN_RESPONSE.equals(user)){
-//                infoLabelLogin.setText(Constants.FAILED_LOGIN_RESPONSE);
-//            } else{
-//                result = authentication(user, password);
-//            }
-            root = FXMLLoader.load(getClass().getResource("../layouts/"+result+"Layout.fxml"));
+            if(Constants.FAILED_LOGIN_RESPONSE.equals(result) || Constants.EMPTY_FIELDS_LOGIN_RESPONSE.equals(result)){
+                infoLabelLogin.setText("");
+                infoLabelLogin.setText(result);
+            } else {
+                root = FXMLLoader.load(getClass().getResource("../layouts/" + result + "Layout.fxml"));
+            }
         }
 
         Scene scene = new Scene(root);
@@ -57,9 +57,14 @@ public class LoginButtonController {
     }
 
     private String authentication(String userName, String password){
+        if(userName.isEmpty() || password.isEmpty()){
+            return Constants.EMPTY_FIELDS_LOGIN_RESPONSE;
+        }
         for(Map.Entry<String, String> map: Constants.usersMap.entrySet()){
             if((userName.equals(map.getKey())) && (password.equals(map.getValue()))){
                 return userName;
+            } else{
+                return Constants.FAILED_LOGIN_RESPONSE;
             }
         }
         return Constants.FAILED_LOGIN_RESPONSE;

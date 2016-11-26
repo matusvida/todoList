@@ -1,5 +1,6 @@
-package layouts;
+package main;
 
+import constants.Constants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("loginLayout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(Constants.LAYOUT_LOGIN));
         primaryStage.setTitle("TODO List");
         primaryStage.setScene(new Scene(root, 780, 630));
         primaryStage.show();

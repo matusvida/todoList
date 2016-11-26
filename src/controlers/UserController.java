@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import main.NotesComponents;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -125,7 +126,7 @@ public class UserController {
     }
 
     private TextArea getNoteFromParent(ActionEvent event, int substringIndex){
-        String uid = event.getSource().toString().substring(Constants.SUBSTRING_START + substringIndex, Constants.SUBSTRING_END+substringIndex);
+        String uid = ((Control) event.getSource()).getId().substring(8 + substringIndex);
         TextArea textArea = null;
         for(Node node: user1Grid.getChildren()){
             if((node instanceof TextArea)&&(node.getId().contains(uid))){
@@ -138,6 +139,7 @@ public class UserController {
 
     private HBox getHBoxFromParent(ActionEvent event, int substringIndex){
         String uid = event.getSource().toString().substring(Constants.SUBSTRING_START + substringIndex, Constants.SUBSTRING_END + substringIndex);
+        uid = ((Control) event.getSource()).getId().substring(8 + substringIndex);
         HBox hBox = null;
         for(Node node: user1Grid.getChildren()){
             if((node instanceof HBox)&&(node.getId().contains(uid))){
@@ -149,6 +151,7 @@ public class UserController {
     }
     private DatePicker getDatePickerFromParent(ActionEvent event){
         String uid = event.getSource().toString().substring(Constants.SUBSTRING_START, Constants.SUBSTRING_END);
+        uid = ((Control) event.getSource()).getId().substring(18);
         DatePicker datePicker = null;
         for(Node node: user1Grid.getChildren()){
             if((node instanceof HBox)){

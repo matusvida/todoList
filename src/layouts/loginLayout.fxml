@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-
-<!--<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="layouts.LoginButtonControllernController">-->
-<!--<columnConstraints>-->
-<!--<ColumnConstraints />-->
-<!--</columnConstraints>-->
-<!--<rowConstraints>-->
-<!--<RowConstraints />-->
-<!--</rowConstraints>-->
-<!--<children>-->
-<!--</children>-->
-<!--</GridPane>-->
+<?import javafx.scene.text.Font?>
 
 <GridPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LoginButtonController">
         <columnConstraints>
@@ -69,5 +54,10 @@
                </GridPane.margin>
             </TextField>
       <Button id="login_btn" fx:id="login_btn" mnemonicParsing="false" onAction="#handleButtonAction" styleClass="btns" stylesheets="@style.css" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label id="infoLabelLogin" fx:id="infoLabelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
+      </Label>
          </children>
       </GridPane>
