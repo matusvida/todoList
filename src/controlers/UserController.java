@@ -1,19 +1,16 @@
 package controlers;
 
-import javafx.animation.FadeTransition;
+import constants.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import constants.Constants;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +19,8 @@ public class UserController {
 
     private String styles = getClass().getResource("../layouts/style.css").toExternalForm();
     private ArrayList<NotesComponents> listOfNotes = new ArrayList<NotesComponents>();
+    private Scene scene;
+    private Stage stage;
     private int rowIndex;
 
     @FXML
@@ -37,6 +36,9 @@ public class UserController {
     private Label infoLabel;
 
     @FXML
+    private Label title_label;
+
+    @FXML
     private void handleAddButtonAction(ActionEvent event) throws IOException{
 
         if (event.getSource() == add_btn) {
@@ -46,55 +48,67 @@ public class UserController {
                 infoLabel.setText(e.getMessage());
                 return;
             }
-            Stage stage = (Stage) add_btn.getScene().getWindow();
+            stage = (Stage) add_btn.getScene().getWindow();
             Parent root = stage.getScene().getRoot();
-            Scene scene = root.getScene();
+            scene = root.getScene();
             scene.getStylesheets().add(styles);
 
-            NotesComponents notesComponents = new NotesComponents(listOfNotes.size()+1);
+            NotesComponents notesComponents = new NotesComponents();
 
             listOfNotes.add(notesComponents);
-//
-            notesComponents.getNote().setId("note"+listOfNotes.size());
-            notesComponents.gethBox().setId("hbox"+listOfNotes.size());
+
             user1Grid.add(notesComponents.getNote(),0,rowIndex,3,1);
             user1Grid.add(notesComponents.gethBox(),3, rowIndex, 4,1);
             notesComponents.getSaveBtn().setOnAction(this::handleSaveButtonAction);
+            notesComponents.getEditBtn().setOnAction(this::handleEditButtonAction);
+            notesComponents.getDeleteBtn().setOnAction(this::handleDeleteButtonAction);
         }
     }
 
     @FXML
     private void handleLogOutButtonAction(ActionEvent event) throws IOException{
-        Stage stage = null;
         Parent root = null;
         if (event.getSource() == logOut_btn) {
-            //get reference to the button's stage
             stage = (Stage) logOut_btn.getScene().getWindow();
-            //load up OTHER FXML document
             root = FXMLLoader.load(getClass().getResource("../layouts/loginLayout.fxml"));
         }
 
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
     private void handleSaveButtonAction(ActionEvent event){
-        String index = event.getSource().toString().substring(18,19);
-        TextArea textArea = listOfNotes.get(Integer.parseInt(index)-1).getNote();
+        TextArea textArea = getNoteFromParent(event, 0);
+        DatePicker datePicker = getDatePickerFromParent(event);
         textArea.setEditable(false);
-        textArea.setDisable(false);
+        datePicker.setEditable(false);
+        datePicker.setDisable(true);
+        textArea.setStyle("-fx-background-color: #7cb8ff");
     }
 
     @FXML
-    private void hoverStyleForButtons(ActionEvent event) throws IOException{
-        System.out.println("something");
-        FadeTransition ft = new FadeTransition(Duration.millis(3000));
-        ft.setNode(add_btn);
-        ft.setFromValue(1.0);
-        ft.setToValue(0.2);
-        ft.play();
+    private void handleEditButtonAction(ActionEvent event){
+        TextArea textArea = getNoteFromParent(event, 0);
+        DatePicker datePicker = getDatePickerFromParent(event);
+        textArea.setEditable(true);
+        datePicker.setEditable(true);
+        datePicker.setDisable(false);
+        textArea.setStyle("-fx-background-color: inherit");
+    }
+
+    @FXML
+    private void handleDeleteButtonAction(ActionEvent event){
+        String ind = ((Control)event.getSource()).getId().substring(10);
+        TextArea textArea = getNoteFromParent(event, Constants.DELETE_BUTTON_SUBSTRING_INDEX);
+        HBox hBox = getHBoxFromParent(event, Constants.DELETE_BUTTON_SUBSTRING_INDEX);
+        listOfNotes.removeIf(s->s.getNote().getId().contains(String.valueOf(ind)));
+
+        user1Grid.getChildren().remove(textArea);
+        user1Grid.getChildren().remove(hBox);
+
+        System.out.println(listOfNotes);
     }
 
 
@@ -110,5 +124,42 @@ public class UserController {
         return rowIndex;
     }
 
+    private TextArea getNoteFromParent(ActionEvent event, int substringIndex){
+        String uid = event.getSource().toString().substring(Constants.SUBSTRING_START + substringIndex, Constants.SUBSTRING_END+substringIndex);
+        TextArea textArea = null;
+        for(Node node: user1Grid.getChildren()){
+            if((node instanceof TextArea)&&(node.getId().contains(uid))){
+                textArea = (TextArea) node;
+                break;
+            }
+        }
+        return textArea;
+    }
 
+    private HBox getHBoxFromParent(ActionEvent event, int substringIndex){
+        String uid = event.getSource().toString().substring(Constants.SUBSTRING_START + substringIndex, Constants.SUBSTRING_END + substringIndex);
+        HBox hBox = null;
+        for(Node node: user1Grid.getChildren()){
+            if((node instanceof HBox)&&(node.getId().contains(uid))){
+                hBox = (HBox) node;
+                break;
+            }
+        }
+        return hBox;
+    }
+    private DatePicker getDatePickerFromParent(ActionEvent event){
+        String uid = event.getSource().toString().substring(Constants.SUBSTRING_START, Constants.SUBSTRING_END);
+        DatePicker datePicker = null;
+        for(Node node: user1Grid.getChildren()){
+            if((node instanceof HBox)){
+                for(Node nestedNote: ((HBox) node).getChildren()){
+                    if((nestedNote instanceof DatePicker)&&(nestedNote.getId().contains(uid))){
+                        datePicker = (DatePicker) nestedNote;
+                        return datePicker;
+                    }
+                }
+            }
+        }
+        return datePicker;
+    }
 }

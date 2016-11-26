@@ -1,22 +1,19 @@
 package controlers;
 
-import com.sun.javafx.css.Style;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-
+import java.rmi.server.UID;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 /**
  * Created by Matus on 24.11.2016.
  */
 public class NotesComponents {
 
-    private int index;
+    private UID uid;
     private TextArea note;
     private HBox hBox;
     private DatePicker datePicker;
@@ -24,8 +21,8 @@ public class NotesComponents {
     private Button saveBtn;
     private Button deleteBtn;
 
-    public NotesComponents(int index){
-        this.index = index;
+    public NotesComponents(){
+        uid = createUid();
         note = createNote();
         datePicker = createDatePicker();
         editBtn = createButton("Edit", "edit_btn");
@@ -33,9 +30,13 @@ public class NotesComponents {
         deleteBtn = createButton("Delete", "delete_btn");
         hBox = createHBox();
     }
+    private UID createUid(){
+        return new UID();
+    }
+
     private final TextArea createNote() {
         TextArea textArea = new TextArea();
-        textArea.setId("textArea"+index);
+        textArea.setId("textArea"+uid);
         textArea.setPrefWidth(200.0);
         textArea.setWrapText(true);
         return textArea;
@@ -43,21 +44,22 @@ public class NotesComponents {
 
     private final Button createButton(String text, String name){
         Button button = new Button(text);
-        button.setId(name+index);
+        button.setId(name+uid);
         button.getStyleClass().add("control-buttons");
         return button;
     }
 
     private final DatePicker createDatePicker(){
         DatePicker datePicker = new DatePicker(LocalDate.now());
-        datePicker.setId("datePicker"+index);
+        datePicker.setId("datePicker"+uid);
         datePicker.getStyleClass().add("date-picker");
         return datePicker;
     }
 
     private final HBox createHBox(){
+
         HBox hBox = new HBox(15.0);
-        hBox.setId("hBox"+index);
+        hBox.setId("hBox"+uid);
         hBox.getStyleClass().add("hbox");
         hBox.getChildren().add(datePicker);
         hBox.getChildren().add(saveBtn);
@@ -66,8 +68,13 @@ public class NotesComponents {
         hBox.setMargin(datePicker, new Insets(0,20,0,-22));
         return hBox;
     }
-    private boolean checkComponentsLimit(GridPane grid){
-        return true;
+
+    public UID getUid() {
+        return uid;
+    }
+
+    public void setUid(UID uid) {
+        this.uid = uid;
     }
 
     public TextArea getNote() {

@@ -29,7 +29,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label id="title_label" contentDisplay="CENTER" prefHeight="30.0" prefWidth="69.0" text="User 1" textAlignment="JUSTIFY" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+        <Label id="title_label" fx:id="title_label" contentDisplay="CENTER" prefHeight="30.0" prefWidth="69.0" text="User 1" textAlignment="JUSTIFY" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="CENTER">
             <font>
                 <Font name="Cambria" size="24.0" />
             </font>
