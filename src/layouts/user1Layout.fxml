@@ -53,7 +53,7 @@
          <GridPane.margin>
             <Insets right="25.0" />
          </GridPane.margin></Button>
-      <Label fx:id="infoLabel" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <Label fx:id="infoLabel" contentDisplay="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <font>
             <Font name="Comic Sans MS Bold" size="14.0" />
          </font>

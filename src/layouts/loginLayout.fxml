@@ -19,12 +19,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label id="title_label" contentDisplay="CENTER" prefHeight="94.0" prefWidth="125.0" text="TODO list" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
+            <Label id="title_label" alignment="BOTTOM_CENTER" contentDisplay="CENTER" minWidth="200.0" prefWidth="500.0" styleClass="title_label" stylesheets="@style.css" text="Welcome in TODO list" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
                <font>
-                  <Font name="Cambria" size="18.0" />
+                  <Font name="Cambria" size="24.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="70.0" right="50.0" />
+                  <Insets top="80.0" />
                </GridPane.margin>
             </Label>
             <Label alignment="CENTER" contentDisplay="RIGHT" text="user name:" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.rowIndex="1">

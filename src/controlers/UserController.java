@@ -113,10 +113,18 @@ public class UserController{
         HBox hBox = getHBoxFromParent(event, Constants.DELETE_BUTTON_SUBSTRING_INDEX);
         listOfNotes.removeIf(s->s.getNote().getId().contains(String.valueOf(ind)));
 
+
         user1Grid.getChildren().remove(textArea);
         user1Grid.getChildren().remove(hBox);
 
-        System.out.println(listOfNotes);
+        for(int i=0; i<listOfNotes.size(); i++){
+            TextArea textAreaToReplace = listOfNotes.get(i).getNote();
+            HBox hBoxToReplace = listOfNotes.get(i).gethBox();
+            user1Grid.getChildren().remove(textAreaToReplace);
+            user1Grid.getChildren().remove(hBoxToReplace);
+            user1Grid.add(textAreaToReplace,0, Constants.MIN_ROW_INDEX+i, 3, 1);
+            user1Grid.add(hBoxToReplace,3, Constants.MIN_ROW_INDEX+i, 4, 1);
+        }
     }
 
 

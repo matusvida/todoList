@@ -22,8 +22,7 @@
 }
 
 .button:hover{
-    -fx-background-color: linear-gradient(#ed5641, #c10e01);
-    -fx-effect: dropshadow(gaussian, #4f4f4f, 2, 0.5, 1, 1);
+    -fx-effect: dropshadow(three-pass-box, #4f4f4f, 2, 0.5, 1, 1);
     -fx-text-fill: #FFFFFF;
 }
 
@@ -56,9 +55,9 @@
 }
 
 .control-buttons:hover{
-    -fx-background-color: linear-gradient(#dddddd, #cccccc);
-    -fx-text-fill: #c10e01;
-    -fx-effect: dropshadow(gaussian, #4f4f4f, 5, 0.5, 1, 1);
+    -fx-background-color: linear-gradient(#f8f8f8, #f0f0f0);
+    -fx-text-fill: #ff2201;
+    -fx-effect: dropshadow(gaussian, #666666, 5, 0.5, 1, 1);
     /*-fx-text-fill: #FFFFFF;*/
 }
 
@@ -98,5 +97,4 @@
 
 .hbox{
     -fx-alignment: center;
-
 }
