@@ -70,7 +70,7 @@ public class LoginButtonController {
     private Scene userSceneSelection(String result) throws IOException {
         Parent root = null;
         Scene scene = null;
-        root = FXMLLoader.load(getClass().getResource("../layouts/" + result + "Layout.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/layouts/" + result + "Layout.fxml"));
         scene = new Scene(root);
         if(ScreenSaver.getScene()!=null) {
             for (Map.Entry<String, Scene> map : ScreenSaver.getScenesList().entrySet()) {

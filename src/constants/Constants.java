@@ -15,11 +15,11 @@ public final class Constants {
         usersMap.put("user2", "123");
     }
 
-    //layouts
-    public static final String LAYOUT_LOGIN = "../layouts/loginLayout.fxml";
-    public static final String LAYOUT_USER1 = "../layouts/loginLayout.fxml";
-    public static final String LAYOUT_USER2 = "../layouts/loginLayout.fxml";
+    //paths
+    public static final String LAYOUT_LOGIN = "/layouts/loginLayout.fxml";
+    public static final String STYLE_LOCATION = "/layouts/style.css";
 
+    //constants
     public static final int MAXIMUM_NOTES = 5;
     public static final int MIN_ROW_INDEX = 2;
     public static final int SUBSTRING_START = 18;

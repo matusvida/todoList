@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class UserController{
 
-    private String styles = getClass().getResource("../layouts/style.css").toExternalForm();
+    private String styles = getClass().getResource(Constants.STYLE_LOCATION).toExternalForm();
     private ArrayList<NotesComponents> listOfNotes = new ArrayList<NotesComponents>();
     private Scene scene;
     private Stage stage;
@@ -71,10 +71,12 @@ public class UserController{
     @FXML
     private void handleLogOutButtonAction(ActionEvent event) throws IOException{
         Parent root = null;
-        ScreenSaver.setScene(getLabelTextFromParent() ,stage.getScene());
+        if(stage !=null) {
+            ScreenSaver.setScene(getLabelTextFromParent(), stage.getScene());
+        }
         if (event.getSource() == logOut_btn) {
             stage = (Stage) logOut_btn.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../layouts/loginLayout.fxml"));
+            root = FXMLLoader.load(getClass().getResource(Constants.LAYOUT_LOGIN));
         }
         scene = new Scene(root);
         stage.setScene(scene);
