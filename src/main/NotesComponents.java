@@ -52,7 +52,6 @@ public class NotesComponents {
     private final DatePicker createDatePicker(){
         DatePicker datePicker = new DatePicker(LocalDate.now());
         datePicker.setId("datePicker"+uid);
-        datePicker.getStyleClass().add("date-picker");
         return datePicker;
     }
 

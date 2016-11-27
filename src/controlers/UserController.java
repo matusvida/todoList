@@ -12,17 +12,18 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import main.NotesComponents;
-
+import main.ScreenSaver;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class UserController {
+public class UserController{
 
     private String styles = getClass().getResource("../layouts/style.css").toExternalForm();
     private ArrayList<NotesComponents> listOfNotes = new ArrayList<NotesComponents>();
     private Scene scene;
     private Stage stage;
     private int rowIndex;
+    private ScreenSaver screenSaver;
 
     @FXML
     private Button add_btn;
@@ -38,6 +39,7 @@ public class UserController {
 
     @FXML
     private Label title_label;
+
 
     @FXML
     private void handleAddButtonAction(ActionEvent event) throws IOException{
@@ -69,24 +71,29 @@ public class UserController {
     @FXML
     private void handleLogOutButtonAction(ActionEvent event) throws IOException{
         Parent root = null;
+        ScreenSaver.setScene(getLabelTextFromParent() ,stage.getScene());
         if (event.getSource() == logOut_btn) {
             stage = (Stage) logOut_btn.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../layouts/loginLayout.fxml"));
         }
-
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    private void handleSaveButtonAction(ActionEvent event){
+    private void handleSaveButtonAction(ActionEvent event) {
+        infoLabel.setText("");
         TextArea textArea = getNoteFromParent(event, 0);
         DatePicker datePicker = getDatePickerFromParent(event);
-        textArea.setEditable(false);
-        datePicker.setEditable(false);
-        datePicker.setDisable(true);
-        textArea.setStyle("-fx-background-color: #7cb8ff");
+        if(textArea.getText().isEmpty()){
+            infoLabel.setText(Constants.FAILED_SAVE_EMPTY_NOTE);
+        } else {
+            textArea.setEditable(false);
+            datePicker.setEditable(false);
+            datePicker.setDisable(true);
+            textArea.setStyle("-fx-background-color: #7cb8ff");
+        }
     }
 
     @FXML
@@ -164,5 +171,14 @@ public class UserController {
             }
         }
         return datePicker;
+    }
+
+    private String getLabelTextFromParent(){
+        for(Node node: user1Grid.getChildren()){
+            if(node instanceof Label){
+                return ((Label) node).getText();
+            }
+        }
+        return null;
     }
 }

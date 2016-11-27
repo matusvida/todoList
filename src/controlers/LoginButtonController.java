@@ -10,8 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import main.ScreenSaver;
 
 import javax.naming.AuthenticationException;
 import java.io.IOException;
@@ -36,8 +36,9 @@ public class LoginButtonController {
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, AuthenticationException {
         Stage stage = null;
-        Parent root = null;
+
         String result = null;
+        Scene scene = null;
         String user = userName.getText();
         String pass = password.getText();
         if (event.getSource() == login_btn) {
@@ -47,13 +48,11 @@ public class LoginButtonController {
                 infoLabelLogin.setText("");
                 infoLabelLogin.setText(result);
             } else {
-                root = FXMLLoader.load(getClass().getResource("../layouts/" + result + "Layout.fxml"));
+                scene = userSceneSelection(result);
+                stage.setScene(scene);
+                stage.show();
             }
         }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     private String authentication(String userName, String password){
@@ -63,10 +62,28 @@ public class LoginButtonController {
         for(Map.Entry<String, String> map: Constants.usersMap.entrySet()){
             if((userName.equals(map.getKey())) && (password.equals(map.getValue()))){
                 return userName;
-            } else{
-                return Constants.FAILED_LOGIN_RESPONSE;
             }
         }
         return Constants.FAILED_LOGIN_RESPONSE;
+    }
+
+    private Scene userSceneSelection(String result) throws IOException {
+        Parent root = null;
+        Scene scene = null;
+        root = FXMLLoader.load(getClass().getResource("../layouts/" + result + "Layout.fxml"));
+        scene = new Scene(root);
+        if(ScreenSaver.getScene()!=null) {
+            for (Map.Entry<String, Scene> map : ScreenSaver.getScenesList().entrySet()) {
+                String key = map.getKey().toLowerCase();
+                if (key.equals(result)) {
+                    root = map.getValue().getRoot();
+                    scene = map.getValue();
+                } else {
+
+                }
+            }
+        }
+
+        return scene;
     }
 }

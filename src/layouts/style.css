@@ -80,9 +80,20 @@
 
 .date-picker{
     -fx-font-size: 12px;
-    -fx-font-family: "Comic Sans MS";
+    -fx-font-family: "Cambria";
     -fx-pref-height: 48px;
     -fx-pref-width: 100px;
+}
+
+.date-picker .button{
+    -fx-pref-width: 50px;
+    -fx-pref-height: 15px;
+    -fx-text-fill: white;
+}
+
+.date-picker .button:hover{
+    -fx-background-color: linear-gradient(#ed5641, #c10e01);
+    -fx-text-fill: #FFFFFF;
 }
 
 .hbox{
